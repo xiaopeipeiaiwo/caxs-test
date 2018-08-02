@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>amchart</title>
+		<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script src="https://www.amcharts.com/lib/3/pie.js"></script>
+		<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+		<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+		<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+		<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+		
+		<style>
+		#chartzhu {
+		  width: 100%;
+		  height: 400px;
+		}
+		#chartzhe {
+			width: 100%;
+			height: 400px;
+			font-size: 11px;
+		}	
+		#chartbing {
+			width: 100%;
+			height: 400px;
+		}			
+		.amcharts-export-menu-top-right {
+		  top: 10px;
+		  right: 0;
+		}
+		</style>
+	</head>
+	<body>
+		<!--柱状图-->
+		<div id="chartzhu"></div>
+		
+		<!--折线图-->
+		<div id="chartzhe"></div>
+		
+		<!--饼图-->
+		<div id="chartbing"></div>	
+		<script>
+			var chart1 = AmCharts.makeChart("chartzhu", {
+			  "type": "serial",
+			  "theme": "light",
+			  "marginRight": 70,
+			  "dataProvider": [{
+			    "country": "USA",
+			    "visits": 3025,
+			    "color": "#FF0F00"
+			  }, {
+			    "country": "China",
+			    "visits": 1882,
+			    "color": "#FF6600"
+			  }, {
+			    "country": "Japan",
+			    "visits": 1809,
+			    "color": "#FF9E01"
+			  }, {
+			    "country": "Germany",
+			    "visits": 1322,
+			    "color": "#FCD202"
+			  }, {
+			    "country": "UK",
+			    "visits": 1122,
+			    "color": "#F8FF01"
+			  }, {
+			    "country": "France",
+			    "visits": 1114,
+			    "color": "#B0DE09"
+			  }, {
+			    "country": "India",
+			    "visits": 984,
+			    "color": "#04D215"
+			  }, {
+			    "country": "Spain",
+			    "visits": 711,
+			    "color": "#0D8ECF"
+			  }, {
+			    "country": "Netherlands",
+			    "visits": 665,
+			    "color": "#0D52D1"
+			  }, {
+			    "country": "Russia",
+			    "visits": 580,
+			    "color": "#2A0CD0"
+			  }, {
+			    "country": "South Korea",
+			    "visits": 443,
+			    "color": "#8A0CCF"
+			  }, {
+			    "country": "Canada",
+			    "visits": 441,
+			    "color": "#CD0D74"
+			  }],
+			  "valueAxes": [{
+			    "axisAlpha": 0,
+			    "position": "left",
+			    "title": "Visitors from country"
+			  }],
+			  "startDuration": 1,
+			  "graphs": [{
+			    "balloonText": "<b>[[category]]: [[value]]</b>",
+			    "fillColorsField": "color",
+			    "fillAlphas": 0.9,
+			    "lineAlpha": 0.2,
+			    "type": "column",
+			    "valueField": "visits"
+			  }],
+			  "chartCursor": {
+			    "categoryBalloonEnabled": false,
+			    "cursorAlpha": 0,
+			    "zoomable": false
+			  },
+			  "categoryField": "country",
+			  "categoryAxis": {
+			    "gridPosition": "start",
+			    "labelRotation": 45
+			  },
+			  "export": {
+			    "enabled": true
+			  }
+			
+			});
+			
+			/*折线图*/
+			var chart2 = AmCharts.makeChart("chartzhe", {
+			    "type": "serial",
+			    "theme": "light",
+			    "marginRight": 80,
+			    "dataProvider": [{
+			        "lineColor": "#b7e021",
+			        "date": "2012-01-01",
+			        "duration": 408
+			    }, {
+			        "date": "2012-01-02",
+			        "duration": 482
+			    }, {
+			        "date": "2012-01-03",
+			        "duration": 562
+			    }, {
+			        "date": "2012-01-04",
+			        "duration": 379
+			    }, {
+			        "lineColor": "#fbd51a",
+			        "date": "2012-01-05",
+			        "duration": 501
+			    }, {
+			        "date": "2012-01-06",
+			        "duration": 443
+			    }, {
+			        "date": "2012-01-07",
+			        "duration": 405
+			    }, {
+			        "date": "2012-01-08",
+			        "duration": 309,
+			        "lineColor": "#2498d2"
+			    }, {
+			        "date": "2012-01-09",
+			        "duration": 287
+			    }, {
+			        "date": "2012-01-10",
+			        "duration": 485
+			    }, {
+			        "date": "2012-01-11",
+			        "duration": 890
+			    }, {
+			        "date": "2012-01-12",
+			        "duration": 810
+			    }],
+			    "balloon": {
+			        "cornerRadius": 6,
+			        "horizontalPadding": 15,
+			        "verticalPadding": 10
+			    },
+			    "valueAxes": [{
+			        "duration": "mm",
+			        "durationUnits": {
+			            "hh": "h ",
+			            "mm": "min"
+			        },
+			        "axisAlpha": 0
+			    }],
+			    "graphs": [{
+			        "bullet": "square",
+			        "bulletBorderAlpha": 1,
+			        "bulletBorderThickness": 1,
+			        "fillAlphas": 0.3,
+			        "fillColorsField": "lineColor",
+			        "legendValueText": "[[value]]",
+			        "lineColorField": "lineColor",
+			        "title": "duration",
+			        "valueField": "duration"
+			    }],
+			    "chartScrollbar": {
+			
+			    },
+			    "chartCursor": {
+			        "categoryBalloonDateFormat": "YYYY MMM DD",
+			        "cursorAlpha": 0,
+			        "fullWidth": true
+			    },
+			    "dataDateFormat": "YYYY-MM-DD",
+			    "categoryField": "date",
+			    "categoryAxis": {
+			        "dateFormats": [{
+			            "period": "DD",
+			            "format": "DD"
+			        }, {
+			            "period": "WW",
+			            "format": "MMM DD"
+			        }, {
+			            "period": "MM",
+			            "format": "MMM"
+			        }, {
+			            "period": "YYYY",
+			            "format": "YYYY"
+			        }],
+			        "parseDates": true,
+			        "autoGridCount": false,
+			        "axisColor": "#555555",
+			        "gridAlpha": 0,
+			        "gridCount": 50
+			    },
+			    "export": {
+			        "enabled": true
+			    }
+			});
+			
+			
+			
+			chart2.addListener("dataUpdated", zoomChart);
+			
+			function zoomChart() {
+			    chart2.zoomToDates(new Date(2012, 0, 3), new Date(2012, 0, 11));
+			}
+			
+			
+			
+			var chart = AmCharts.makeChart( "chartbing", {
+			  "type": "pie",
+			  "theme": "light",
+			  "dataProvider": [ {
+			    "country": "Lithuania",
+			    "value": 260
+			  }, {
+			    "country": "Ireland",
+			    "value": 201
+			  }, {
+			    "country": "Germany",
+			    "value": 65
+			  }, {
+			    "country": "Australia",
+			    "value": 39
+			  }, {
+			    "country": "UK",
+			    "value": 19
+			  }, {
+			    "country": "Latvia",
+			    "value": 10
+			  } ],
+			  "valueField": "value",
+			  "titleField": "country",
+			  "outlineAlpha": 0.4,
+			  "depth3D": 15,
+			  "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+			  "angle": 30,
+			  "export": {
+			    "enabled": true
+			  }
+			} );
+		</script>
+	</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>hangge.com</title>
+    <meta charset="UTF-8">
+    <script src="js/RGraph.common.core.js" ></script>
+    <script src="js/RGraph.line.js" ></script>
+    
+    <script src="js/RGraph.common.key.js" ></script>
+    <script src="js/RGraph.bar.js" ></script>
+    
+    <script src="js/RGraph.common.tooltips.js"></script>
+	<script src="js/RGraph.common.dynamic.js"></script>
+	<script src="js/RGraph.pie.js"></script>
+    
+</head>
+ 
+<body>
+    <canvas id="cvs1" width="500" height="200">[No canvas support]</canvas>
+    
+  	<canvas id="cvs2" width="500" height="250">[No canvas support]</canvas>
+  	
+  	<canvas id="cvs3" width="550" height="250">[No canvas support]</canvas>
+    <script>
+        window.onload = function ()
+        {
+            var line = new RGraph.Line({
+                id: 'cvs1',
+                data: [84,76,79,84,86,52,53],
+                options: {
+                    hmargin: 5,
+                    tickmarks: 'endcircle',
+                    labels: ['一月','二月','三月','四月','五月','六月','七月']
+                }
+            }).draw()
+            
+
+           	var bar = new RGraph.Bar({
+		        id: 'cvs2',
+		        data: [ [4,8,3],[5,2,1], [8,4,2],[3,6,1],[5,1,0],[2,5,1],[1,2,2] ],
+		        options: {
+		            variant: '3d',
+		            variantThreedAngle: 0.1,
+		            strokestyle: 'rgba(0,0,0,0)',
+		            colors: ['Gradient(#fbb:red)', 'Gradient(#bfb:green)','Gradient(#bbf:blue)'],
+		            gutterTop: 35,
+		            gutterLeft: 45,
+		            gutterRight: 15,
+		            gutterBottom: 85,
+		            labels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+		            shadowColor:'#ccc',
+		            shadowOffsetx: 3,
+		            backgroundGridColor: '#eee',
+		            scaleZerostart: true,
+		            axisColor: '#ddd',
+		            unitsPost: 'km',
+		            title: 'Distance run in the past week',
+		            key: ['John','Kevin','Lucy'],
+		            keyShadow: true,
+		            keyShadowColor: '#ccc',
+		            keyShadowOffsety: 0,
+		            keyShadowOffsetx: 3,
+		            keyShadowBlur: 15,
+		            textAccessible: false
+		        }
+		    }).draw();
+		    
+		    
+		    var data = [20,13.43,2.83,4.24,7.42,13.43,38.65];
+	        var labels = ['Miscellaneous','Cooking','Office equipment','Refridgeration','Cooling','Ventilation','Lighting'];
+	        
+	        for (var i=0; i<data.length; ++i) {
+	            labels[i] = labels[i] + ', ' + data[i] + '%';
+	        }
+	
+	        var pie = new RGraph.Pie({
+	            id: 'cvs3',
+	            data: data,
+	            options: {
+	                labels: labels,
+	                labelsSticksList: true,
+	                tooltips: labels,
+	                colors: ['#EC0033','#A0D300','#FFCD00','#00B869','#999999','#FF7300','#004CB0'],
+	                strokestyle: 'white',
+	                linewidth: 0,
+	                shadowOffsetx: 2,
+	                shadowOffsety: 2,
+	                shadowBlur: 3,
+	                exploded: 7,
+	                textAccessible: true
+	            }
+	        }).draw();
+	    };
+    </script>
+ 
+</body>
+</html>
